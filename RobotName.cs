@@ -3,12 +3,13 @@ using System;
 
 public class Robot
 {
+    list<string> robotNames = new list<string>();
 
     public string Name
     {
         get
         {
-            var randomString = GenerateRandomName();
+            string randomString = GenerateRandomName();
            
             
             return randomString;
