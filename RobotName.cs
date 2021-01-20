@@ -1,13 +1,41 @@
 using System;
 
+
 public class Robot
 {
+
     public string Name
     {
         get
         {
-            throw new NotImplementedException("You need to implement this function.");
+            var randomString = GenerateRandomName();
+           
+            
+            return randomString;
         }
+
+    }
+
+    private string GenerateRandomName()
+    {
+        Random _rand = new Random();
+        string randomString = "";
+        string[] letters = { "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z" };
+
+        for (int i = 0; i < 5; i++)
+        {
+            if (i < 2)
+            {
+                string randomLetter = letters[_rand.Next(0, 25)];
+                randomString += randomLetter;
+            }
+            else
+            {
+                string randomInt = (_rand.Next(0, 9)).ToString();
+                randomString += randomInt;
+            }
+        }
+        return randomString;
     }
 
     public void Reset()
