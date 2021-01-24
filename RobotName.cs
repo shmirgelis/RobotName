@@ -1,21 +1,23 @@
 using System;
-
+using System.Collections.Generic;
 
 public class Robot
 {
-    list<string> robotNames = new list<string>();
+    List<string> robotNames = new List<string>();
+    private string robotName = " ";
+   
+
 
     public string Name
     {
         get
         {
-            string randomString = GenerateRandomName();
-           
-            
-            return randomString;
+            return robotName;
         }
 
     }
+
+
 
     private string GenerateRandomName()
     {
@@ -38,6 +40,28 @@ public class Robot
         }
         return randomString;
     }
+
+    private string TrackRobotNames(string randomString)
+    {
+        if (robotNames.Contains(randomString))
+        {
+            return randomString;
+        }
+        else
+        {
+            randomString = GenerateRandomName();
+            robotNames.Add(randomString);
+            return randomString;
+        }
+    }
+
+    //private string RobotNames
+    //{
+    //    set
+    //    {
+    //        TrackRobotNames(value);
+    //    }
+    //}
 
     public void Reset()
     {
