@@ -3,16 +3,21 @@ using System.Collections.Generic;
 
 public class Robot
 {
+    public Robot()
+    {
+        name = UniqueRobotName();
+    }
+
     List<string> robotNames = new List<string>();
-    private string robotName = " ";
-   
+    private string name;
+
 
 
     public string Name
     {
         get
         {
-            return robotName;
+            return name;
         }
 
     }
@@ -41,30 +46,20 @@ public class Robot
         return randomString;
     }
 
-    private string TrackRobotNames(string randomString)
+    private string UniqueRobotName()
     {
-        if (robotNames.Contains(randomString))
+        string randomName = GenerateRandomName();
+        while (robotNames.Contains(randomName))
         {
-            return randomString;
+            randomName = GenerateRandomName();
         }
-        else
-        {
-            randomString = GenerateRandomName();
-            robotNames.Add(randomString);
-            return randomString;
-        }
+        robotNames.Add(randomName);
+        return randomName;
     }
 
-    //private string RobotNames
-    //{
-    //    set
-    //    {
-    //        TrackRobotNames(value);
-    //    }
-    //}
 
     public void Reset()
     {
-        throw new NotImplementedException("You need to implement this function.");
+        name = UniqueRobotName(); 
     }
 }
