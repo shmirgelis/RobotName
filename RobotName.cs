@@ -48,11 +48,11 @@ public class Robot
 
     private string UniqueRobotName()
     {
-        string randomName = GenerateRandomName();
-        while (robotNames.Contains(randomName))
+        string randomName;
+        do
         {
             randomName = GenerateRandomName();
-        }
+        } while(robotNames.Contains(randomName));
         robotNames.Add(randomName);
         return randomName;
     }
@@ -60,6 +60,6 @@ public class Robot
 
     public void Reset()
     {
-        name = UniqueRobotName(); 
+        name = UniqueRobotName();
     }
 }
